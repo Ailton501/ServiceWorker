@@ -56,7 +56,7 @@ var cacheFiles = [
 
 self.addEventListener('activate', function(e) {
     console.log('Service Worker: Activado');
-    e.waitUntil()(
+    e.waitUntil(
         caches.keys().then(function(cacheNames) {
             return Promise.all(cacheNames.map(function(thisCacheName) {
                    if(thisCacheName !== CACHE_NAME) {
