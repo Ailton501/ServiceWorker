@@ -3,7 +3,7 @@ self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open(CACHE_NAME).then(function(cache) {
             console.log('Service Worker: Cache abierto');
-            return cache.add(cacheFiles);
+            return cache.addAll(cacheFiles);
         })
     )
 });
@@ -12,6 +12,7 @@ var CACHE_NAME = 'v1';
 var cacheFiles = [
                 './',
                 './index.html',
+                './app.js',
                 './estilos.css',
                 './manifest.json',
                 './oferta_educativa.html',
