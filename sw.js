@@ -1,3 +1,13 @@
+self.addEventListener('install', function(e) {
+    console.log('Service Worker: Instalado');
+    e.waitUntil(
+        caches.open(CACHE_NAME).then(function(cache) {
+            console.log('Service Worker: Cache abierto');
+            return cache.addAll(cacheFiles);
+        })
+    )
+});
+
 var CACHE_NAME = 'v1';
 var cacheFiles = [
                 './',
@@ -43,15 +53,6 @@ var cacheFiles = [
                 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3746.06702196738!2d-99.23779302540879!3d20.13125131800007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d3d4fe19ff8255%3A0xffaabb1ef338a3ef!2sEscuela%20Superior%20de%20Tlahuelilpan%20UAEH!5e0!3m2!1ses-419!2smx!4v1713744368756!5m2!1ses-419!2smx'
 ]
 
-self.addEventListener('install', function(e) {
-    console.log('Service Worker: Instalado');
-    e.waitUntil(
-        caches.open(CACHE_NAME).then(function(cache) {
-            console.log('Service Worker: Cache abierto');
-            return cache.addAll(cacheFiles);
-        })
-    )
-})
 
 self.addEventListener('activate', function(e) {
     console.log('Service Worker: Activado');
